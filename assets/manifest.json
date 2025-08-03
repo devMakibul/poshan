@@ -1,0 +1,52 @@
+{
+  "name": "Photo Compare",
+  "short_name": "Photo Compare",
+  "description": "Compare two photos easily",
+  "id": "comparePhotoMakibul",
+  "theme_color": "#0000ff",
+  "background_color": "#0000ff",
+  "display": "standalone",
+  "orientation": "portrait",
+  "dir": "ltr",
+  "scope": "/poshan/",
+  "start_url": "/poshan/?source=pwa",
+  "lang": "en-US",
+  "categories": ["utilities", "photography"],
+  "icons": [
+    {
+      "src": "android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+
+  "share_target": {
+    "action": "/poshan/",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "files": [
+        {
+          "name": "image",
+          "accept": ["image/*"]
+        }
+      ]
+    }
+  },
+
+  "file_handlers": [
+    {
+      "action": "/poshan/",
+      "accept": {
+        "image/*": [".png", ".jpg", ".jpeg", ".webp", ".bmp"]
+      }
+    }
+  ]
+}
