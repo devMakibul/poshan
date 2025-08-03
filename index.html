@@ -5,68 +5,106 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Photo Compare Tool</title>
+    <link href='/poshan/assets/apple-touch-icon.png' rel='apple-touch-icon' sizes='180x180' />
+    <link href='/poshan/assets/favicon.ico' rel='shortcut icon' sizes='any' type='image/png' />
+    <link href='/poshan/assets/manifest.json' rel='manifest' />
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <link rel="stylesheet" href="style.css">
+    <script src="https://beamanalytics.b-cdn.net/beam.min.js" data-token="c14842ae-4407-4257-837d-42328a45648b" async>
+    </script>
 </head>
 
 <body>
-    <h1>Photo Comparison Tool</h1>
+    <h2 class="title">Photo Comparison Tool</h2>
 
     <div class="image-controls">
         <div class="image-block">
-            <div class="custom-file-upload">
-                <label for="file-input-0"><ion-icon name="image-outline"></ion-icon> Choose Image 1</label>
-                <input type="file" id="file-input-0" accept="image/*" onchange="loadImage(event, 0)" />
-            </div>
+            <div class="image-select-wrap">
+                <button class="camera-btn" onclick="openCamera()"><ion-icon name="camera-outline"></ion-icon>
+                    Camera</button>
+                <input type="file" accept="image/*" capture="environment" style="display:none" id="cameraInput"
+                    onchange="loadImage(event, 0)" />
 
-            <button class="camera-btn" onclick="openCamera()"><ion-icon name="camera-outline"></ion-icon>
-                Camera</button>
-            <input type="file" accept="image/*" capture="environment" style="display:none" id="cameraInput"
-                onchange="loadImage(event, 0)" />
+                <div class="custom-file-upload">
+                    <label for="file-input-0"><ion-icon name="image-outline"></ion-icon> Choose Image 1</label>
+                    <input type="file" id="file-input-0" accept="image/*" onchange="loadImage(event, 0)" />
+                </div>
+            </div>
 
             <div class="preview" id="preview0"><canvas id="canvas0"></canvas></div>
             <div class="control-panel">
-                <button onclick="transform(0, 'rotate')"><ion-icon name="refresh-outline"></ion-icon> Rotate</button>
-                <button onclick="transform(0, 'flipV')"><ion-icon name="swap-vertical-outline"></ion-icon> Flip
-                    V</button>
-                <button onclick="transform(0, 'flipH')"><ion-icon name="swap-horizontal-outline"></ion-icon> Flip
-                    H</button>
+                <div class="btn-wrap">
+                    <button onclick="transform(0, 'rotate', event)"><ion-icon name="refresh-outline"></ion-icon>
+                        Rotate</button>
+                </div>
+                <div class="btn-wrap">
+                    <button onclick="transform(0, 'flipV', event)"><ion-icon name="swap-vertical-outline"></ion-icon>
+                        Flip
+                        V</button>
+                </div>
+                <div class="btn-wrap">
+                    <button onclick="transform(0, 'flipH', event)"><ion-icon name="swap-horizontal-outline"></ion-icon>
+                        Flip
+                        H</button>
+                </div>
             </div>
         </div>
 
         <div class="image-block">
-            <div class="custom-file-upload">
-                <label for="file-input-1"><ion-icon name="image-outline"></ion-icon> Choose Image 2</label>
-                <input type="file" id="file-input-1" accept="image/*" onchange="loadImage(event, 1)" />
+
+            <div class="image-select-wrap">
+                <div class="custom-file-upload">
+                    <label for="file-input-1"><ion-icon name="image-outline"></ion-icon> Choose Image 2</label>
+                    <input type="file" id="file-input-1" accept="image/*" onchange="loadImage(event, 1)" />
+                </div>
             </div>
+
+
             <div class="preview" id="preview1"><canvas id="canvas1"></canvas></div>
             <div class="control-panel">
-                <button onclick="transform(1, 'rotate')"><ion-icon name="refresh-outline"></ion-icon> Rotate</button>
-                <button onclick="transform(1, 'flipV')"><ion-icon name="swap-vertical-outline"></ion-icon> Flip
-                    V</button>
-                <button onclick="transform(1, 'flipH')"><ion-icon name="swap-horizontal-outline"></ion-icon> Flip
-                    H</button>
+                <div class="btn-wrap">
+                    <button onclick="transform(1, 'rotate', event)"><ion-icon name="refresh-outline"></ion-icon>
+                        Rotate</button>
+                </div>
+                <div class="btn-wrap">
+                    <button onclick="transform(1, 'flipV', event)"><ion-icon name="swap-vertical-outline"></ion-icon>
+                        Flip
+                        V</button>
+                </div>
+                <div class="btn-wrap">
+                    <button onclick="transform(1, 'flipH', event)"><ion-icon name="swap-horizontal-outline"></ion-icon>
+                        Flip
+                        H</button>
+                </div>
             </div>
         </div>
     </div>
 
-    <button class="compare-btn" onclick="compareImages()"><ion-icon name="checkmark-outline"></ion-icon> Done</button>
+    <button class="compare-btn" onclick="compareImages()">Next <ion-icon
+            name="arrow-forward-outline"></ion-icon></button>
 
     <div class="compare-container" id="compareContainer">
-        <h2>Result</h2>
+        <div class="result-topbar">
+            <h2>Result</h2>
+            <button id="close-btn" onclick="closePopup()"><ion-icon name="close-outline"></ion-icon> Close</button>
+        </div>
         <div class="overlay">
             <img id="overlay0" />
             <img id="overlay1" />
         </div>
         <div class="blink-btns">
-            <button onclick="blinkTwice()"><ion-icon name="eye-outline"></ion-icon> Blink</button>
-            <button onclick="toggleOverlay()"><ion-icon name="people-circle-outline"></ion-icon> Change Image</button>
+            <div class="btn-wrap">
+                <button onclick="blinkTwice()"><ion-icon name="play-circle-outline"></ion-icon> Blink</button>
+            </div>
+            <div class="btn-wrap">
+                <button onclick="toggleOverlay()"><ion-icon name="repeat-outline"></ion-icon> Change Image</button>
+            </div>
         </div>
 
     </div>
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
