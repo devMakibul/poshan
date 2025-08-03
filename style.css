@@ -1,202 +1,258 @@
+/* CSS Reset */
 * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        html {
-            line-height: 1.15;
-            /* Improve readability */
-            -webkit-text-size-adjust: 100%;
-            /* Prevent font scaling in iOS */
-        }
+html {
+    line-height: 1;
+    -webkit-text-size-adjust: 100%;
+}
 
-        body {
-            font-family: sans-serif;
-            /* Set a default font */
-            font-size: 16px;
-            /* Set a default font size */
-            line-height: 1.5;
-            /* Set a default line height */
-            padding: 10px;
-        }
+body {
+    font-family: sans-serif;
+    font-size: 16px;
+    line-height: 1;
+    padding: 30px 10px 10px;
+}
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            color: black;
-        }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: black;
+}
 
-        p {
-            margin: 0;
-            /* Remove default margin */
-        }
+p {
+    margin: 0;
+}
 
-        ul,
-        ol {
-            list-style: none;
-            /* Remove default list styles */
-        }
+ul,
+ol {
+    list-style: none;
+}
 
-        a {
-            text-decoration: none;
-            /* Remove underline from links */
-            color: inherit;
-            /* Inherit color from parent */
-        }
+a {
+    text-decoration: none;
+    color: inherit;
+}
 
-        img {
-            max-width: 100%;
-            /* Make images responsive */
-            height: auto;
-            /* Maintain aspect ratio */
-        }
+img {
+    max-width: 100%;
+    height: auto;
+}
 
-        table {
-            border-collapse: collapse;
-            /* Collapse table borders */
-            width: 100%;
-            /* Make tables responsive */
-        }
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
 
+.title {
+    text-align: center;
+    margin-bottom: 30px;
+}
 
-        .custom-file-upload {
-            position: relative;
-            display: inline-block;
-            cursor: pointer;
-            margin: 10px;
-        }
-
-        .custom-file-upload input[type="file"] {
-            display: none;
-            /* Hide the default file input */
-        }
-
-        .custom-file-upload label {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            /* Green background */
-            color: white;
-            /* White text */
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .custom-file-upload label:hover {
-            background-color: #45a049;
-            /* Darker green on hover */
-        }
-
-        .camera-btn {
-            padding: 6px 12px;
-            border: none;
-            border-radius: 7px;
-            background-color: lightgray;
-        }
+.image-select-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border-bottom: 3px solid blue;
+}
 
 
-        .image-controls {
-            margin: 10px;
-        }
+.custom-file-upload {
+    position: relative;
+    display: flex;
+    cursor: pointer;
+    width: 100%;
+}
 
-        .image-block {
-            border: 3px solid blue;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 50px;
-            border-radius: 7px;
-            background-color: #ececff;
-        }
+.custom-file-upload input[type="file"] {
+    display: none;
+}
 
-        .preview {
-            max-width: 500px;
-            max-height: 500px;
-            border: 2px solid #ccc;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            touch-action: none;
-        }
+.custom-file-upload label {
+    padding: 10px 20px;
+    text-align: center;
+    border-radius: 0 5px 0 0;
+    transition: background-color 0.3s;
+    width: 100%;
 
-        canvas {
-            max-width: 100%;
-            max-height: 100%;
-            touch-action: none;
-        }
+}
 
-        .control-panel {
-            display: flex;
-            gap: 10px;
-            padding: 10px;
-        }
+.custom-file-upload label:hover {
+    background-color: rgb(167, 167, 255);
+}
 
-        .control-panel button {
-            padding: 5px 10px;
-            border: none;
-            border-radius: 5px;
-            background-color: blue;
-            color: white;
-        }
+.camera-btn {
+    padding: 10px 15px;
+    border: none;
+    border-right: 3px solid blue;
+    background-color: transparent;
+    flex-shrink: 0;
+}
 
-        .compare-btn {
-            padding: 20px;
-            width: calc(100% - 20px);
-            margin: 10px;
-            background-color: #00ac00;
-            color: white;
-            border: none;
-            border-radius: 10px;
-        }
 
-        button {
-            transition: 0.2s ease;
-        }
+.image-controls {
+    margin: 10px;
+}
 
-        button:active {
-            opacity: 0.8;
-            transform: scale(0.9);
-        }
+.image-block {
+    border: 3px solid blue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    border-radius: 7px;
+    background-color: #ececff;
+}
 
-        .compare-container {
-            margin-top: 30px;
-            display: none;
-            flex-direction: column;
-            align-items: center;
-        }
+.image-block:nth-child(2) {
+    margin-bottom: 120px;
+}
 
-        .overlay {
-            position: relative;
-            width: 100%;
-            padding-bottom: clamp(0px, 100vw, 500px);
-            max-width: 500px;
-        }
+.preview {
+    max-width: 500px;
+    max-height: 500px;
+    border-inline: 1px solid blue;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    touch-action: none;
+}
 
-        .overlay img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            object-fit: cover;
-            opacity: 1;
-        }
+canvas {
+    max-width: 100%;
+    max-height: 100%;
+    touch-action: none;
+}
 
-        .blink-btns {
-            padding: 10px;
-            display: flex;
-            gap: 20px;
-        }
+.control-panel {
+    display: flex;
+    border-top: 3px solid blue;
+    width: 100%;
+    justify-content: space-around;
+}
 
-        .blink-btns button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            background-color: blue;
-            color: white;
-            font-size: 17px;
-        }
+.control-panel button {
+    padding: 15px 5px;
+    border: none;
+    width: 100%;
+    background-color: transparent;
+}
+
+.control-panel button.selected {
+    background-color: #bbbbff;
+}
+
+.btn-wrap {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-wrap:last-child button {
+    border-radius: 0 0 5px;
+}
+
+.btn-wrap:not(:last-child) {
+    border-right: 3px solid blue;
+}
+
+.compare-btn {
+    padding: 17px 20px;
+    width: calc(100% - 20px);
+    margin: 10px;
+    background-color: #00ac00;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    box-shadow: rgb(255 255 255) 0px 0px 30px 30px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+
+button {
+    transition: 0.2s ease;
+    font-size: inherit;
+}
+
+button:active {
+    opacity: 0.8;
+    transform: scale(0.9);
+}
+
+.compare-container {
+    padding: 20px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+.result-topbar {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    width: 100%;
+}
+
+.result-topbar button {
+    border: none;
+    border-left: 2px solid rgb(118, 118, 255);
+    border-bottom: 2px solid rgb(118, 118, 255);
+    border-radius: 0px 0 0px 15px;
+    padding: 10px 20px 10px 15px;
+    display: flex;
+    gap: 2px;
+    align-items: center;
+    background-color: transparent;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+.overlay {
+    position: relative;
+    width: 100%;
+    padding-bottom: clamp(0px, 100vw, 500px);
+    max-width: 500px;
+}
+
+.overlay img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    object-fit: cover;
+    opacity: 1;
+}
+
+.blink-btns {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    justify-content: space-around;
+    border-top: 3px solid blue;
+}
+
+.blink-btns button {
+    padding: 25px 10px;
+    border: none;
+    background-color: transparent;
+    flex-grow: 1;
+}
