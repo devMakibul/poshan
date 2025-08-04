@@ -28,7 +28,7 @@
   ],
 
   "share_target": {
-    "action": "/poshan/share-target",
+    "action": "/poshan/",
     "method": "POST",
     "enctype": "multipart/form-data",
     "params": {
