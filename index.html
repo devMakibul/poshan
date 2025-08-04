@@ -104,32 +104,6 @@
 
     </div>
 
-    
-    <script>
-         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw.js').then(() => {
-                console.log('Service Worker registered');
-            });
-
-            // Listen for messages from the service worker (share_target)
-            navigator.serviceWorker.addEventListener('message', event => {
-                if (event.data.type === 'share-target' && event.data.files.length > 0) {
-                    // Create a fake File input event and load the first shared image
-                    const dataURL = event.data.files[0];
-                    const img = new Image();
-                    img.onload = () => {
-                        images[0] = img;
-                        draw(0);
-                        alert('Image drawn')
-                    };
-                    img.src = dataURL;
-                }
-            });
-        }
-
-
-    </script>
-
     <script src="script.js"></script>
 </body>
 
