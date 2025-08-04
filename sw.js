@@ -11,7 +11,7 @@ self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
 
   // Only handle POST requests to '/'
-  if (event.request.method === 'POST' && url.pathname === '/') {
+  if (event.request.method === 'POST' && url.pathname === '/poshan/') {
     event.respondWith((async () => {
       // Parse the form data
       const formData = await event.request.formData();
@@ -38,7 +38,7 @@ self.addEventListener('fetch', event => {
       }
 
       // Respond with a redirect to the homepage or any URL you want
-      return Response.redirect('/', 303);
+      return Response.redirect('/poshan/', 303);
     })());
   }
 });
