@@ -27,19 +27,6 @@
     }
   ],
 
-  "share_target": {
-    "action": "/poshan/",
-    "method": "POST",
-    "enctype": "multipart/form-data",
-    "params": {
-      "files": [
-        {
-          "name": "image",
-          "accept": ["image/*"]
-        }
-      ]
-    }
-  },
 
   "file_handlers": [
     {
