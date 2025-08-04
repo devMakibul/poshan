@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Receiving shared image...</title>
+</head>
+<body>
+<script>
+  if ('launchQueue' in window && 'files' in LaunchParams.prototype) {
+    launchQueue.setConsumer(async (launchParams) => {
+      if (!launchParams.files.length) return;
+
+      const file = launchParams.files[0];
+      const reader = new FileReader();
+      reader.onload = () => {
+        sessionStorage.setItem("sharedImage", reader.result);
+        window.location.href = "/poshan/";
+      };
+      reader.readAsDataURL(file);
+    });
+  } else {
+    // fallback for older browsers
+    window.location.href = "/poshan/";
+  }
+</script>
+</body>
+</html>
